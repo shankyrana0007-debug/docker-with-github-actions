@@ -26,7 +26,6 @@ jobs:
           path: ~/.npm
           key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        if: failure()
         run: npm ci
       - name: Run server
         run: |

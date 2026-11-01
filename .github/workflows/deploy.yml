@@ -21,11 +21,13 @@ jobs:
       - name: Get Code
         uses: actions/checkout@v4
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ env.CACHE_KEY }}-${{ hashFiles('node_modules') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache_hit != 'true'
         run: npm ci
       - name: Run server
         run: |

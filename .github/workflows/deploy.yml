@@ -23,8 +23,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.npm
-          key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ env.CACHE_KEY }}-${{ hashFiles('node_modules') }}
       - name: Install dependencies
         if: failure()
         run: npm ci

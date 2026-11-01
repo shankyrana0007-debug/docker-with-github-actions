@@ -26,7 +26,6 @@ jobs:
           path: node_modules
           key: ${{ env.CACHE_KEY }}-${{ hashFiles('node_modules') }}
       - name: Install dependencies
-        if: failure()
         run: npm ci
       - name: Run server
         run: |
